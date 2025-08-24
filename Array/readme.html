@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Object vs. Array of Objects Visualization</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .concept-box {
+            transition: all 0.3s ease-in-out;
+        }
+        .object-box, .array-element {
+             box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .interactive-input {
+            @apply w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition;
+        }
+        .interactive-btn {
+            @apply w-full bg-blue-600 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition duration-150 ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 md:p-8">
+
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-2">Object Concepts in C++</h1>
+        <p class="text-center text-gray-600 mb-8 md:mb-12">Visualizing the difference between an object containing arrays and an array of objects.</p>
+
+        <!-- Concept 1: Object Containing Arrays -->
+        <div class="concept-box bg-white p-6 rounded-xl shadow-lg mb-12 border border-gray-200">
+            <h2 class="text-2xl font-bold text-blue-700 mb-1">Concept 1: Object Containing Arrays</h2>
+            <p class="text-gray-600 mb-6">A single object manages internal arrays. Example: `Shop dukaan;`</p>
+            
+            <!-- Interactive Controls for Concept 1 -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 p-4 bg-gray-50 rounded-lg border">
+                <input type="number" id="itemIdInput" placeholder="Enter Item ID" class="interactive-input">
+                <input type="number" id="itemPriceInput" placeholder="Enter Item Price" class="interactive-input">
+                <button id="addItemBtn" class="interactive-btn sm:col-span-1">Add Item</button>
+            </div>
+
+            <div class="object-box bg-blue-50 border-2 border-dashed border-blue-400 p-6 rounded-lg">
+                <div class="flex items-center mb-4">
+                     <span class="text-lg font-semibold text-blue-800">Shop Object (`dukaan`)</span>
+                </div>
+               
+                <div class="space-y-4">
+                    <div>
+                        <h4 class="font-semibold text-gray-700">int counter;</h4>
+                        <div class="bg-gray-200 h-8 w-20 rounded flex items-center justify-center mt-1">
+                            <span id="shopCounter" class="text-sm font-mono">3</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700">int itemId[100];</h4>
+                        <div id="itemIdContainer" class="flex space-x-2 mt-2 overflow-x-auto pb-2">
+                            <div class="w-20 h-12 bg-white border border-gray-300 rounded flex items-center justify-center flex-shrink-0"><span class="font-mono text-sm">101</span></div>
+                            <div class="w-20 h-12 bg-white border border-gray-300 rounded flex items-center justify-center flex-shrink-0"><span class="font-mono text-sm">102</span></div>
+                            <div class="w-20 h-12 bg-white border border-gray-300 rounded flex items-center justify-center flex-shrink-0"><span class="font-mono text-sm">103</span></div>
+                            <div class="w-20 h-12 bg-gray-200 border border-gray-300 rounded flex items-center justify-center flex-shrink-0 text-gray-500">...</div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-gray-700">int itemPrice[100];</h4>
+                        <div id="itemPriceContainer" class="flex space-x-2 mt-2 overflow-x-auto pb-2">
+                            <div class="w-20 h-12 bg-white border border-gray-300 rounded flex items-center justify-center flex-shrink-0"><span class="font-mono text-sm">150</span></div>
+                            <div class="w-20 h-12 bg-white border border-gray-300 rounded flex items-center justify-center flex-shrink-0"><span class="font-mono text-sm">200</span></div>
+                            <div class="w-20 h-12 bg-white border border-gray-300 rounded flex items-center justify-center flex-shrink-0"><span class="font-mono text-sm">50</span></div>
+                            <div class="w-20 h-12 bg-gray-200 border border-gray-300 rounded flex items-center justify-center flex-shrink-0 text-gray-500">...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Concept 2: Array of Objects -->
+        <div class="concept-box bg-white p-6 rounded-xl shadow-lg border border-gray-200">
+            <h2 class="text-2xl font-bold text-green-700 mb-1">Concept 2: Array of Objects</h2>
+            <p class="text-gray-600 mb-6">An array where each element is a separate, independent object. Example: `employee harry[5];`</p>
+
+             <!-- Interactive Controls for Concept 2 -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 p-4 bg-gray-50 rounded-lg border">
+                <input type="number" id="employeeIdInput" placeholder="Enter Employee ID" class="interactive-input sm:col-span-2">
+                <button id="addEmployeeBtn" class="interactive-btn sm:col-span-1">Add Employee</button>
+            </div>
+
+            <div class="bg-green-50 border-2 border-dashed border-green-400 p-6 rounded-lg">
+                 <span class="text-lg font-semibold text-green-800 mb-4 block">`harry` Array</span>
+                <div id="employeeContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="array-element bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-bold text-gray-800">harry[0]</h4>
+                        <div class="mt-3 space-y-2 text-sm">
+                            <p><span class="font-semibold">id:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">1</span></p>
+                            <p><span class="font-semibold">salary:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">10000</span></p>
+                        </div>
+                    </div>
+                    <div class="array-element bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-bold text-gray-800">harry[1]</h4>
+                        <div class="mt-3 space-y-2 text-sm">
+                            <p><span class="font-semibold">id:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">2</span></p>
+                            <p><span class="font-semibold">salary:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">10000</span></p>
+                        </div>
+                    </div>
+                    <div class="array-element bg-white p-4 rounded-lg border border-gray-200">
+                        <h4 class="font-bold text-gray-800">harry[2]</h4>
+                        <div class="mt-3 space-y-2 text-sm">
+                            <p><span class="font-semibold">id:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">3</span></p>
+                            <p><span class="font-semibold">salary:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">10000</span></p>
+                        </div>
+                    </div>
+                     <div id="employeePlaceholder" class="array-element bg-gray-50 p-4 rounded-lg border border-dashed border-gray-300 flex items-center justify-center">
+                        <span class="text-gray-500 font-semibold">... and so on</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- INTERACTIVITY FOR CONCEPT 1: OBJECT CONTAINING ARRAYS ---
+        const addItemBtn = document.getElementById('addItemBtn');
+        const itemIdInput = document.getElementById('itemIdInput');
+        const itemPriceInput = document.getElementById('itemPriceInput');
+        const itemIdContainer = document.getElementById('itemIdContainer');
+        const itemPriceContainer = document.getElementById('itemPriceContainer');
+        const shopCounter = document.getElementById('shopCounter');
+
+        addItemBtn.addEventListener('click', () => {
+            const id = itemIdInput.value;
+            const price = itemPriceInput.value;
+
+            // Basic validation
+            if (!id || !price) {
+                alert('Please enter both an ID and a Price.');
+                return;
+            }
+
+            // Create new element for Item ID
+            const idElement = document.createElement('div');
+            idElement.className = 'w-20 h-12 bg-white border border-blue-400 rounded flex items-center justify-center flex-shrink-0 animate-pulse';
+            idElement.innerHTML = `<span class="font-mono text-sm">${id}</span>`;
+
+            // Create new element for Item Price
+            const priceElement = document.createElement('div');
+            priceElement.className = 'w-20 h-12 bg-white border border-blue-400 rounded flex items-center justify-center flex-shrink-0 animate-pulse';
+            priceElement.innerHTML = `<span class="font-mono text-sm">${price}</span>`;
+            
+            // Insert the new elements before the '...' placeholder
+            itemIdContainer.insertBefore(idElement, itemIdContainer.lastElementChild);
+            itemPriceContainer.insertBefore(priceElement, itemPriceContainer.lastElementChild);
+
+            // Update the counter
+            shopCounter.textContent = parseInt(shopCounter.textContent) + 1;
+
+            // Clear inputs
+            itemIdInput.value = '';
+            itemPriceInput.value = '';
+            
+            // Remove animation after it plays
+            setTimeout(() => {
+                idElement.classList.remove('animate-pulse');
+                priceElement.classList.remove('animate-pulse');
+            }, 500);
+        });
+
+        // --- INTERACTIVITY FOR CONCEPT 2: ARRAY OF OBJECTS ---
+        const addEmployeeBtn = document.getElementById('addEmployeeBtn');
+        const employeeIdInput = document.getElementById('employeeIdInput');
+        const employeeContainer = document.getElementById('employeeContainer');
+        let employeeCount = 3; // Starting count from existing elements
+
+        addEmployeeBtn.addEventListener('click', () => {
+            const id = employeeIdInput.value;
+
+            // Basic validation
+            if (!id) {
+                alert('Please enter an Employee ID.');
+                return;
+            }
+
+            // Create the new employee object element
+            const employeeElement = document.createElement('div');
+            employeeElement.className = 'array-element bg-white p-4 rounded-lg border border-green-400 animate-pulse';
+            employeeElement.innerHTML = `
+                <h4 class="font-bold text-gray-800">harry[${employeeCount}]</h4>
+                <div class="mt-3 space-y-2 text-sm">
+                    <p><span class="font-semibold">id:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">${id}</span></p>
+                    <p><span class="font-semibold">salary:</span> <span class="font-mono bg-gray-100 px-2 py-1 rounded">10000</span></p>
+                </div>
+            `;
+
+            // Insert the new element before the placeholder
+            employeeContainer.insertBefore(employeeElement, document.getElementById('employeePlaceholder'));
+            
+            // Increment count for the next one
+            employeeCount++;
+
+            // Clear input
+            employeeIdInput.value = '';
+
+            // Remove animation after it plays
+            setTimeout(() => {
+                employeeElement.classList.remove('animate-pulse');
+            }, 500);
+        });
+    </script>
+
+</body>
+</html>
