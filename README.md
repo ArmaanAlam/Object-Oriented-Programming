@@ -6,11 +6,11 @@ Welcome to this C++ OOP Practice repository! This project is a collection of C++
 Core Concepts Covered
 This repository showcases various OOP concepts through clear and commented examples. The key principles demonstrated include:
 
-📦 Encapsulation: Bundling data (attributes) and the methods (functions) that operate on that data into a single unit, or class. Access to the data is controlled through public interfaces, protecting it from outside interference.
+Encapsulation: Bundling data (attributes) and the methods (functions) that operate on that data into a single unit, or class. Access to the data is controlled through public interfaces, protecting it from outside interference.
 
-🎭 Abstraction: Hiding complex implementation details from the user and showing only the essential features of an object. This is often achieved using abstract classes and interfaces, simplifying the way we interact with our code.
+Abstraction: Hiding complex implementation details from the user and showing only the essential features of an object. This is often achieved using abstract classes and interfaces, simplifying the way we interact with our code.
 
-👨‍👩‍👧‍👦 Inheritance: The mechanism of basing an object or class upon another object (prototype-based inheritance) or class (class-based inheritance), retaining similar implementation. This promotes code reusability and establishes a clear hierarchy between classes.
+Inheritance: The mechanism of basing an object or class upon another object (prototype-based inheritance) or class (class-based inheritance), retaining similar implementation. This promotes code reusability and establishes a clear hierarchy between classes.
 
 ** polymorphic-shapes.png Polymorphism**: The ability for a message to be displayed in more than one form. In C++, this is primarily achieved through function overriding (using virtual functions) and function overloading, allowing objects of different classes to be treated as objects of a common superclass.
 
@@ -68,7 +68,7 @@ src/: Contains the implementation of the classes and functions declared in the h
 
 main.cpp: The entry point of the application. It's used to create objects and demonstrate the OOP concepts in action.
 
-Contributing 🤝
+Contributing 
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement". Don't forget to give the project a star! Thanks again!
